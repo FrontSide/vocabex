@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 3 Words of the Day</title>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-black min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 text-center" x-data="app">
+        <div class="max-w-2xl mx-auto">
+            <div x-show="loading" class="text-white loading">
+                Loading today's words...
+            </div>
+            <div x-show="!loading" class="text-white text-lg" x-html="response"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html> 

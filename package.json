@@ -1,0 +1,14 @@
+{
+  "name": "daily-llm-insights",
+  "version": "1.0.0",
+  "description": "A lightweight web application that displays daily LLM-generated insights",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.9",
+    "dotenv": "^16.3.1"
+  }
+} 
