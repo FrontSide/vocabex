@@ -124,6 +124,11 @@ app.get('/api/words', async (req, res) => {
 // Serve static files
 app.use(express.static(path.join(__dirname)));
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+});
+
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Server running on port ${port}`);
 }); 
