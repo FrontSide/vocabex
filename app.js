@@ -3,6 +3,7 @@ document.addEventListener('alpine:init', () => {
     Alpine.data('app', () => ({
         response: '',
         loading: true,
+        lastFetchTime: 'Never',
 
         async init() {
             console.log('Initializing app...');
@@ -11,6 +12,9 @@ document.addEventListener('alpine:init', () => {
                 const data = await response.json();
                 
                 console.log(data);
+
+                // Update the last fetch time
+                this.lastFetchTime = `Last updated: ${new Date().toLocaleTimeString()}`;
 
                 // Format the response for display
                 this.response = data.response.map(word => 

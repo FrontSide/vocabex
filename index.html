@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-black min-h-screen flex items-center justify-center">
+<body class="bg-black min-h-screen flex items-center justify-center relative">
     <div class="container mx-auto px-4 text-center" x-data="app">
         <div class="max-w-2xl mx-auto">
             <div x-show="loading" class="text-white loading">
@@ -17,6 +17,7 @@
             <div x-show="!loading" class="text-white text-lg" x-html="response"></div>
         </div>
     </div>
+    <div class="absolute bottom-4 left-4 text-gray-500 text-sm" x-text="lastFetchTime"></div>
     <script src="app.js"></script>
 </body>
 </html> 
