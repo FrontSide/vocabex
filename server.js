@@ -29,13 +29,13 @@ let cache = {
 
 // Function to get today's date in YYYY-MM-DD format
 function getTodayDate() {
-    return new Date().toISOString().split('T')[0];
+    return new Date().toISOString();
 }
 
 // Function to check if we need to fetch new data
 function shouldFetchNewData() {
-    const today = getTodayDate();
-    return !cache.lastFetchDate || cache.lastFetchDate !== today;
+    const today = new Date().toISOString().split('T')[0];
+    return !cache.lastFetchDate || cache.lastFetchDate.split('T')[0] !== today;
 }
 
 // Function to fetch LLM response

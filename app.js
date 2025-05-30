@@ -11,16 +11,20 @@ document.addEventListener('alpine:init', () => {
                 const response = await fetch('/api/words');
                 const data = await response.json();
                 
-                console.log(data);
+                console.log('Server response:', data);
+                console.log('Last fetch date:', data.lastFetchDate);
 
                 // Update the last fetch time using server's timestamp
-                this.lastFetchTime = `Last updated: ${new Date(data.lastFetchDate).toLocaleString(undefined, { 
+                const date = new Date(data.lastFetchDate);
+                console.log('Parsed date:', date);
+                this.lastFetchTime = `Last updated: ${date.toLocaleString(undefined, { 
                     year: 'numeric', 
                     month: 'short', 
                     day: 'numeric',
                     hour: '2-digit',
                     minute: '2-digit'
                 })}`;
+                console.log('Formatted time:', this.lastFetchTime);
 
                 // Format the response for display
                 this.response = data.response.map(word => 
