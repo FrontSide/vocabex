@@ -13,8 +13,14 @@ document.addEventListener('alpine:init', () => {
                 
                 console.log(data);
 
-                // Update the last fetch time
-                this.lastFetchTime = `Last updated: ${new Date().toLocaleTimeString()}`;
+                // Update the last fetch time using server's timestamp
+                this.lastFetchTime = `Last updated: ${new Date(data.lastFetchDate).toLocaleString(undefined, { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })}`;
 
                 // Format the response for display
                 this.response = data.response.map(word => 
