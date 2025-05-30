@@ -1,4 +1,4 @@
-# Daily Vocabulary Words
+# Vocabex
 
 A lightweight web application that displays three new vocabulary words daily, complete with definitions and example sentences. The application uses an LLM to generate fresh content each day.
 
@@ -15,7 +15,7 @@ A lightweight web application that displays three new vocabulary words daily, co
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd daily-vocabulary-words
+cd vocabex
 ```
 
 2. Install dependencies:
@@ -23,7 +23,7 @@ cd daily-vocabulary-words
 npm install
 ```
 
-3. Create a `.env` file in the root directory with your LLM API credentials:
+3. Set the following env variables
 ```
 LLM_API_ENDPOINT=your_llm_api_endpoint
 LLM_API_KEY=your_llm_api_key
@@ -38,34 +38,26 @@ The application will be available at `http://localhost:3000`.
 
 ## Deployment to Google Cloud Run
 
-1. Install the [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
-
-2. Enable required APIs:
+1. Set up environment variables in Google Cloud Run:
 ```bash
-gcloud services enable run.googleapis.com
-gcloud services enable artifactregistry.googleapis.com
-```
-
-3. Set up environment variables in Google Cloud Run:
-```bash
-gcloud run services update daily-vocabulary-words \
+gcloud run services update vocabex\
   --update-env-vars LLM_API_ENDPOINT=your_endpoint,LLM_API_KEY=your_key
 ```
 
-4. Build and deploy:
+2. Build and deploy:
 ```bash
 # Build the container
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/daily-vocabulary-words
+gcloud builds submit --tag <region>-dev.pkg/YOUR_PROJECT_ID/vocabex/vocabex
 
 # Deploy to Cloud Run
-gcloud run deploy daily-vocabulary-words \
-  --image gcr.io/YOUR_PROJECT_ID/daily-vocabulary-words \
+gcloud run deploy vocabex \
+  --image <region>-dev.pkg/YOUR_PROJECT_ID/vocabex/vocabex \
   --platform managed \
-  --region your-preferred-region \
+  --region <region> \
   --allow-unauthenticated
 ```
 
-Replace `YOUR_PROJECT_ID` with your Google Cloud project ID and `your-preferred-region` with your desired region (e.g., `us-central1`).
+Replace `YOUR_PROJECT_ID` with your Google Cloud project ID and `region` with your desired region (e.g., `us-central1`).
 
 ## Tech Stack
 
