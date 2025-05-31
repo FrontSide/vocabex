@@ -4,10 +4,16 @@ document.addEventListener('alpine:init', () => {
         response: '',
         loading: true,
         lastFetchTime: 'Never',
+        version: '...',
 
         async init() {
             console.log('Initializing app...');
             try {
+                // Fetch version
+                const versionResponse = await fetch('/api/version');
+                const versionData = await versionResponse.json();
+                this.version = versionData.version;
+
                 const response = await fetch('/api/words');
                 const data = await response.json();
                 

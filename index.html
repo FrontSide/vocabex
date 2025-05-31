@@ -17,6 +17,7 @@
             <div x-show="!loading" class="text-white text-lg" x-html="response"></div>
         </div>
         <div x-show="!loading" class="absolute bottom-4 left-4 text-gray-500 text-sm" x-text="lastFetchTime"></div>
+        <div x-show="!loading" class="absolute bottom-4 right-4 text-gray-500 text-sm" x-text="'v' + version"></div>
     </div>
     <script src="app.js"></script>
 </body>

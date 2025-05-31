@@ -6,13 +6,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci
 
 # Copy application files
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 3000
+# Expose port
+EXPOSE 8080
 
-# Command to run the application
-CMD ["npm", "start"] 
+# Start the application
+CMD ["node", "server.js"] 
