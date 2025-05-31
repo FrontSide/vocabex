@@ -9,7 +9,6 @@ document.addEventListener('alpine:init', () => {
         async init() {
             console.log('Initializing app...');
             try {
-                // Fetch version
                 const versionResponse = await fetch('/api/version');
                 const versionData = await versionResponse.json();
                 this.version = versionData.version;

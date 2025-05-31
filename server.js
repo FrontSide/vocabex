@@ -140,7 +140,29 @@ app.get('/api/words', async (req, res) => {
     }
 });
 
-// Version endpoint
+app.get('/api/words/history', async (req, res) => {
+    try {
+        const latestResponses = await getLatestNResponses(100);
+        let recordedWords = [] 
+        const allWords = latestResponses.flatMap(response => 
+            response.response.filter(word => !recordedWords.includes(word.word)).map(word => {
+                recordedWords.push(word.word);
+                return { 
+                    word: word.word,
+                    class: word.class,
+                    fetchDate: response.fetch_date,
+                    definitions: word.definitions,
+                    sentences: word.sentences
+                }
+            })
+        );
+        res.json(allWords);
+    } catch (error) {
+        console.error('Error fetching word history:', error);
+        res.status(500).json({ error: 'Failed to fetch word history' });
+    }
+});
+
 app.get('/api/version', (req, res) => {
     res.json({ version: VERSION });
 });
@@ -148,7 +170,6 @@ app.get('/api/version', (req, res) => {
 // Serve static files
 app.use(express.static(path.join(__dirname)));
 
-// Health check endpoint
 app.get('/health', (req, res) => {
     res.status(200).send('OK');
 });
