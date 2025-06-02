@@ -57,8 +57,8 @@ document.addEventListener('alpine:init', () => {
                     </div>`
                 ).join('');
             } catch (error) {
-                console.error('Error fetching daily insight:', error);
-                this.response = 'Unable to fetch today\'s insight. Please try again later.';
+                console.error('Error fetching today\'s words:', error);
+                this.response = 'Unable to fetch today\'s words. Please try again later.';
             }
             this.loading = false;
         }

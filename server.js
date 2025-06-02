@@ -44,6 +44,9 @@ async function fetchLLMResponse(latestResponses) {
             throw new Error('LLM API configuration missing');
         }
 
+        if (latestResponses == null) {
+            latestResponses = []
+        }
         let wordsToExclude = []
         for (let response of latestResponses) {
             for (let wordResponse of response) {
@@ -107,7 +110,7 @@ async function fetchLLMResponse(latestResponses) {
         return words;
     } catch (error) {
         console.error('Error fetching LLM response:', error);
-        return 'Unable to fetch today\'s insight. Please try again later.';
+        return 'Unable to fetch today\'s words. Please try again later.';
     }
 }
 
@@ -129,6 +132,7 @@ app.get('/api/words', async (req, res) => {
                 lastFetchDate: fetchDate
             });
         } else {
+            console.log("Using cached response")
             res.json({
                 response: latestWords[0].response,
                 lastFetchDate: latestWords[0].fetch_date
