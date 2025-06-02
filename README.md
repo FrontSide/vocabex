@@ -36,7 +36,7 @@ npm start
 
 The application will be available at `http://localhost:3000`.
 
-## Deployment to Google Cloud Run
+## Deployment to Google Cloud Run (Manual)
 
 1. Set up environment variables in Google Cloud Run:
 ```bash
@@ -58,6 +58,12 @@ gcloud run deploy vocabex \
 ```
 
 Replace `YOUR_PROJECT_ID` with your Google Cloud project ID and `region` with your desired region (e.g., `us-central1`).
+
+## Deployment to Google Could Run (Continuous Deployment)
+
+Google Cloud Run offers the option to have new versions deployed automatically upon push to a specified github branch.
+Use the Web UI to set this up. Don't forget to set the environment variables.
+
 
 ## Tech Stack
 
