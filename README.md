@@ -38,6 +38,8 @@ The application will be available at `http://localhost:3000`.
 
 ## Deployment to Google Cloud Run (Manual)
 
+The below is an example and the steps may be incomplete.
+
 1. Set up environment variables in Google Cloud Run:
 ```bash
 gcloud run services update vocabex\
@@ -64,6 +66,7 @@ Replace `YOUR_PROJECT_ID` with your Google Cloud project ID and `region` with yo
 Google Cloud Run offers the option to have new versions deployed automatically upon push to a specified github branch.
 Use the Web UI to set this up. Don't forget to set the environment variables.
 
+In order to persist the database, a volume must be mounted onto the ./db folder.
 
 ## Tech Stack
 
