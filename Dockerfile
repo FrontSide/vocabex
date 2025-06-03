@@ -11,6 +11,8 @@ RUN npm install
 # Copy application files
 COPY . .
 
+RUN mkdir db
+
 # Expose port
 EXPOSE 8080
 
