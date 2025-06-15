@@ -2,7 +2,7 @@
 
 # Build the Docker container
 build:
-	docker build -t vocabex .
+	docker build -t vocabex-local .
 
 # Run the Docker container with environment variables
 run:
@@ -12,4 +12,4 @@ run:
 		--restart always \
 		-v vocabex-db:/app/db \
 		--env-file .env \
-		vocabex
+		vocabex-local
