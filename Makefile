@@ -7,6 +7,7 @@ build:
 # Run the Docker container with environment variables
 run:
 	docker run -p 8081:3000 \
+		-d \
 		--restart always \
 		-v vocabex-db:/app/db \
 		--env-file .env \
