@@ -36,6 +36,35 @@ npm start
 
 The application will be available at `http://localhost:3000`.
 
+## Running with Docker
+
+1. Make sure you have Docker installed on your system.
+
+2. Create a `.env` file in the project root with your environment variables:
+```
+LLM_API_ENDPOINT=your_llm_api_endpoint
+LLM_API_KEY=your_llm_api_key
+```
+
+3. Build and run the container:
+```bash
+# Build the container
+make build
+
+# Run the container
+make run
+```
+
+The application will be available at `http://localhost:8081`. The container is configured to:
+- Automatically restart if it crashes or if Docker restarts
+- Persist the SQLite database using a Docker volume
+- Use the environment variables from your `.env` file
+
+To stop the container:
+```bash
+docker stop vocabex
+```
+
 ## Deployment to Google Cloud Run (Manual)
 
 The below is an example and the steps may be incomplete.
