@@ -114,7 +114,7 @@ async function fetchLLMResponse(latestResponses) {
     }
 }
 
-app.get('/api/words', async (req, res) => {
+app.get('/vocabex/api/words', async (req, res) => {
     try {
         
         const latestWords = await getLatestNResponses(3);
@@ -144,7 +144,7 @@ app.get('/api/words', async (req, res) => {
     }
 });
 
-app.get('/api/words/history', async (req, res) => {
+app.get('/vocabex/api/words/history', async (req, res) => {
     try {
         const latestResponses = await getLatestNResponses(100);
         let recordedWords = [] 
@@ -167,14 +167,14 @@ app.get('/api/words/history', async (req, res) => {
     }
 });
 
-app.get('/api/version', (req, res) => {
+app.get('/vocabex/api/version', (req, res) => {
     res.json({ version: VERSION });
 });
 
 // Serve static files
-app.use(express.static(path.join(__dirname)));
+app.use('/vocabex', express.static(path.join(__dirname)));
 
-app.get('/health', (req, res) => {
+app.get('/vocabex/health', (req, res) => {
     res.status(200).send('OK');
 });
 

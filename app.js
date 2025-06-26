@@ -9,11 +9,11 @@ document.addEventListener('alpine:init', () => {
         async init() {
             console.log('Initializing app...');
             try {
-                const versionResponse = await fetch('/api/version');
+                const versionResponse = await fetch('/vocabex/api/version');
                 const versionData = await versionResponse.json();
                 this.version = versionData.version;
 
-                const response = await fetch('/api/words');
+                const response = await fetch('/vocabex/api/words');
                 const data = await response.json();
                 
                 console.log('Server response:', data);
