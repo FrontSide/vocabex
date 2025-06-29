@@ -8,6 +8,7 @@ build:
 run:
 	docker run -p 8081:3000 \
 		--name vocabex \
+		--network uptime-bridge \
 		-d \
 		--restart always \
 		-v vocabex-db:/app/db \
