@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 function buildPrompt(wordsToExclude) {
     return `I am a proficient english speaker, but would like to expand my english vocabulary.
     Give me three new words that I should add to my vocabulary, including the definition and one or more sentences using the word.
-    Fo not include the following words, as we just recently learned those: ${wordsToExclude}
+    Do not include the following words, as we just recently learned those: ${wordsToExclude}
     Format the response as follows: 
     [Example Start]
     - <Word 1>:<word class>: <definition1>; <definition2>
@@ -48,8 +48,8 @@ async function fetchLLMResponse(latestResponses) {
             latestResponses = []
         }
         let wordsToExclude = []
-        for (let response of latestResponses) {
-            for (let wordResponse of response) {
+        for (let oneOfLatestResponses of latestResponses) {
+            for (let wordResponse of oneOfLatestResponses.response) {
                 wordsToExclude.push(wordResponse.word)
             }
         }
@@ -122,7 +122,7 @@ app.get('/vocabex/api/words', async (req, res) => {
         console.log(`latest words is: ${JSON.stringify(latestWords)}`)
         
         if (latestWords.length == 0 || shouldFetchNewData(latestWords[0].fetch_date)) {
-            const fullResponse = await fetchLLMResponse(latestWords.response);
+            const fullResponse = await fetchLLMResponse(latestWords);
             const fetchDate = getTodayDate();
             
             await saveResponse(fetchDate, fullResponse);
